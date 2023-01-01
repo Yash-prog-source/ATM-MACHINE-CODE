@@ -1,0 +1,156 @@
+package YASHATM.com;
+import java.util.Scanner;
+public class YashATMPROJRCT {
+	
+	 //main method starts   
+    public static void main(String args[] )  
+    {  
+        //declare and initialize balance, withdraw, and deposit  
+        int balance = 100000, deposit = 0;
+		int withdraw = 0; 
+		@SuppressWarnings("unused")
+		boolean accountno = false;
+		int amount = 0;
+		
+          
+        try (//create scanner class object to get choice of user  
+		Scanner sc = new Scanner(System.in)) {
+			while(true)  
+			{  
+			    System.out.println("Automated Teller Machine"); 
+			    System.out.println("choose 1 for transcations history of debited or credited amount");
+			    System.out.println("Choose 2 for Withdraw");  
+			    System.out.println("Choose 3 for Deposit");  
+			    System.out.println("Choose 4 for Check Balance");
+			    System.out.println("choose 5 for transfer");
+			    System.out.println("Choose 6 for QUIT");  
+			    System.out.print("Choose the operation you want to perform:");  
+			      
+			    //get choice from user  
+			    int choice = sc.nextInt();  
+			    switch(choice)  
+			    {  
+			    
+			        case 1:
+			        	
+			// displaying transcations history of debited or Credited amount from the user account        	
+			System.out.print("enter the amount ");
+		
+			
+					if( balance >= withdraw )
+					{
+						withdraw = sc.nextInt(); 
+						
+						balance = balance - withdraw;  
+						System.out.println("This much amount is debiteded from the account");
+						
+					}
+					
+					else if(balance <= deposit)
+					{
+						deposit = sc.nextInt();
+						 balance = balance + deposit;  
+					        System.out.println("This much amount is credited in the account");  
+					        
+					}
+					else if(accountno)
+					{
+						accountno = sc.hasNextBoolean();  
+						
+						String account = null;
+						System.out.println("account no :" +account );  
+						System.out.println("");
+					}
+					
+					
+					else
+					{
+						 String transcations = null;
+						System.out.println("transcations history :" + transcations );  
+					}
+					System.out.println("");
+					break;
+					
+					
+   
+			        case 2:  
+			System.out.print("Enter money to be withdrawn:");  
+			              
+			//get the withdrawn money from user  
+			withdraw = sc.nextInt();  
+			              
+			//check whether the balance is greater than or equal to the withdrawal amount  
+			if(balance >= withdraw)  
+			{  
+			    //remove the withdraw amount from the total balance  
+			    balance = balance - withdraw;  
+			    System.out.println("Please collect your money");  
+			}  
+			else  
+			{  
+			    //show custom error message   
+			    System.out.println("Insufficient Balance");  
+			}  
+			System.out.println("");  
+			break;  
+   
+			
+			
+			        case 3:  
+			              
+			System.out.print("Enter money to be deposited:");  
+			              
+			//get deposite amount from the user  
+			deposit = sc.nextInt();  
+			              
+			//add the deposit amount to the total balanace  
+			balance = balance + deposit;  
+			System.out.println("Your Money has been successfully deposited");  
+			System.out.println("");  
+			break;  
+   
+			
+			
+			        case 4: 
+			        	
+			//displaying the total balance of the user  
+			System.out.println("Balance : "+balance);  
+			System.out.println("");  
+			break;  
+   
+			         
+			        case 5:
+			//entering another account name
+			System.out.println("enter the account no"); 
+			
+			accountno = sc.hasNextBoolean();  
+			
+			//transfer the amount to another account
+			System.out.println("enter the amount to be transfer");
+			
+			amount = sc.nextInt();  
+			
+			if(balance >= amount)  
+			{  
+			    //remove the withdraw amount from the total balance  
+			    balance = balance - amount;  
+			    System.out.println("The money  is successfully transfered to the receiver account");  
+			}  
+			else 
+			{
+				System.out.println("Due to technical erroe amount is not transfered");
+				
+			}
+			System.out.println("");  
+			break; 
+			
+			
+			        case 6:  
+			//exit from the menu  
+			System.exit(0);  
+			    }  
+			}
+		}  
+    }  
+
+}
